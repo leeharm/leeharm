@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.introduction {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.skills {
+    background-color: #eaeaea;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.skills ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills ul li {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.contact {
+    background-color: #333;
+    padding: 20px;
+    color: #fff;
+}
+
+.contact ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact ul li {
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    header, .introduction, .skills, .contact {
+        padding: 10px;
+    }
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>John Doe</h1>
+    </header>
+
+    <section class="introduction">
+        <h2>Introduction</h2>
+        <p>Hello, I'm Humphrey, a student at Power Learning Project</p>
+    </section>
+
+    <section class="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Responsive Web Design</li>
+            <li>UI/UX Design</li>
+        </ul>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Information</h2>
+        <ul>
+            <li>Email: john@example.com</li>
+            <li>Social Media: <a href="#">LinkedIn</a>, <a href="#">Twitter</a></li>
+        </ul>
+    </section>
+</body>
+</html>
