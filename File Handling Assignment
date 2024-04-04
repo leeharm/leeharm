@@ -1,0 +1,32 @@
+# File Creation
+try:
+    with open("my_file.txt", "w") as file:
+        file.write("This is line 1\n")
+        file.write("12345\n")
+        file.write("Adding some text and numbers\n")
+except Exception as e:
+    print(f"An error occurred: {e}")
+finally:
+    print("File creation completed.")
+
+# File Reading and Display
+try:
+    with open("my_file.txt", "r") as file:
+        content = file.read()
+        print("File Contents:")
+        print(content)
+except Exception as e:
+    print(f"An error occurred: {e}")
+finally:
+    print("File reading completed.")
+
+# File Appending
+try:
+    with open("my_file.txt", "a") as file:
+        file.write("Appending line 1\n")
+        file.write("67890\n")
+        file.write("Adding more text and numbers\n")
+except Exception as e:
+    print(f"An error occurred: {e}")
+finally:
+    print("File appending completed.")
