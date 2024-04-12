@@ -1,0 +1,46 @@
+import 'dart:io';
+import 'dart:convert';
+
+// Define an interface
+abstract class Vehicle {
+  void start();
+}
+
+// Define a class that implements the interface
+class Car implements Vehicle {
+  @override
+  void start() {
+    print('The car has started.');
+  }
+}
+
+// Define a class that overrides an inherited method
+class ElectricCar extends Car {
+  @override
+  void start() {
+    print('The electric car has started silently.');
+  }
+}
+
+// Read data from a file and initialize an instance of a class
+Future<void> main() async {
+  final file = File('data.json');
+  final data = jsonDecode(await file.readAsString());
+
+  // Define a class with a constructor that accepts data from a file
+  class Person {
+    String name;
+    int age;
+
+    Person(this.name, this.age);
+  }
+
+  final person = Person(data['name'], data['age']);
+  print('Person: ${person.name}, ${person.age}');
+
+  // Demonstrate the use of a loop
+  final cars = [Car(), ElectricCar()];
+  for (final car in cars) {
+    car.start();
+  }
+}
