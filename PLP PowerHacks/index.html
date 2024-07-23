@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telemedicine Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Telemedicine Platform</h1>
+        </header>
+
+        <section id="appointment-scheduler">
+            <h2>Schedule an Appointment</h2>
+            <form id="appointment-form">
+                <input type="date" id="appointment-date" required>
+                <input type="time" id="appointment-time" required>
+                <button type="submit">Schedule</button>
+            </form>
+            <h3>Upcoming Appointments</h3>
+            <ul id="appointments-list"></ul>
+        </section>
+
+        <section id="video-consultation">
+            <h2>Video Consultation</h2>
+            <video id="local-video" autoplay><src="https://www.bing.com/videos/riverview/relatedvideo?&q=telemedicine+pictures&&mid=0D48391F30B8D206BBAE0D48391F30B8D206BBAE&&FORM=VRDGAR" /video>
+            <video id="local-video" autoplay>https://www.bing.com/videos/riverview/relatedvideo?&q=telemedicine+pictures&&mid=0D48391F30B8D206BBAE0D48391F30B8D206BBAE&&FORM=VRDGAR</video>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
