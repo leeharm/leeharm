@@ -1,0 +1,7 @@
+puts "Hi Humphrey"
+print "Hello World humphrey"
+puts " Yooh"
+puts "   /| "
+puts "  / | "
+puts " /  | "
+puts "/___| "
