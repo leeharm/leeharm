@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Week 5 Assignment</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1 id="main-title">Welcome to My Week 5 Assignment</h1>
+  <p id="info-text">Click the button below to trigger a function:</p>
+  <button id="click-me">Click Me</button>
+
+  <ul id="item-list"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+###style.css
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: royalblue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+###script.js
+// =======================
+// Part 1: Variable Declarations & Conditionals
+// =======================
+
+let username = "Alice";
+let age = 22;
+
+if (age >= 18) {
+  console.log(`${username} is an adult.`);
+} else {
+  console.log(`${username} is a minor.`);
+}
+
+// =======================
+// Part 2: Custom Functions
+// =======================
+
+function greetUser(name) {
+  console.log(`Hello, ${name}!`);
+}
+
+function addNumbers(a, b) {
+  return a + b;
+}
+
+// Trigger function on button click
+document.getElementById("click-me").addEventListener("click", () => {
+  greetUser(username);
+  let result = addNumbers(10, 5);
+  alert(`10 + 5 = ${result}`);
+});
+
+// =======================
+// Part 3: Loop Examples
+// =======================
+
+// For loop
+for (let i = 1; i <= 5; i++) {
+  console.log(`For loop count: ${i}`);
+}
+
+// While loop
+let count = 0;
+while (count < 3) {
+  console.log(`While loop count: ${count}`);
+  count++;
+}
+
+// =======================
+// Part 4: DOM Interactions
+// =======================
+
+// 1. Change title text
+document.getElementById("main-title").textContent = "JS DOM Assignment";
+
+// 2. Change paragraph color
+document.getElementById("info-text").style.color = "green";
+
+// 3. Add list items to ul
+const ul = document.getElementById("item-list");
+const items = ["Item A", "Item B", "Item C"];
+items.forEach(item => {
+  const li = document.createElement("li");
+  li.textContent = item;
+  ul.appendChild(li);
+});
