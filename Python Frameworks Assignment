@@ -1,0 +1,86 @@
+###############Part 1 & 2: Data Loading, Exploration, Cleaning (Python script or Jupyter Notebook)
+
+import pandas as pd
+
+# Load metadata file
+df = pd.read_csv('metadata.csv')
+
+# Basic exploration
+print(f"Dataset shape: {df.shape}")
+print(df.info())
+print(df.head())
+
+# Check missing values
+missing_counts = df.isnull().sum()
+print("Missing values per column:")
+print(missing_counts[missing_counts > 0])
+
+# Basic stats for numerical columns
+print(df.describe())
+
+# Convert publish_time to datetime
+df['publish_time'] = pd.to_datetime(df['publish_time'], errors='coerce')
+
+# Extract year
+df['year'] = df['publish_time'].dt.year
+
+# Example: create abstract word count column
+df['abstract_word_count'] = df['abstract'].fillna("").apply(lambda x: len(str(x).split()))
+
+# Handle missing data example: drop rows missing 'publish_time'
+df_cleaned = df.dropna(subset=['publish_time'])
+
+print(df_cleaned.info())
+
+
+################Part 3: Simple Visualization 
+
+import matplotlib.pyplot as plt
+
+# Papers by year
+year_counts = df_cleaned['year'].value_counts().sort_index()
+
+plt.figure(figsize=(10,6))
+plt.bar(year_counts.index, year_counts.values)
+plt.title('Number of Publications by Year')
+plt.xlabel('Year')
+plt.ylabel('Number of Papers')
+plt.show()
+
+
+##############Part 4: Streamlit App Basic Structure
+
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
+@st.cache
+def load_data():
+    df = pd.read_csv('metadata.csv')
+    df['publish_time'] = pd.to_datetime(df['publish_time'], errors='coerce')
+    df['year'] = df['publish_time'].dt.year
+    df['abstract_word_count'] = df['abstract'].fillna("").apply(lambda x: len(str(x).split()))
+    return df.dropna(subset=['publish_time'])
+
+df = load_data()
+
+st.title("CORD-19 Data Explorer")
+st.write("Explore COVID-19 research paper metadata")
+
+year_range = st.slider("Select publication year range:", int(df['year'].min()), int(df['year'].max()), (2020, 2021))
+
+filtered_df = df[(df['year'] >= year_range[0]) & (df['year'] <= year_range[1])]
+
+st.write(f"Showing papers published between {year_range[0]} and {year_range[1]}")
+st.dataframe(filtered_df.head(10))
+
+# Visualization: Papers by year in selected range
+year_counts = filtered_df['year'].value_counts().sort_index()
+
+fig, ax = plt.subplots()
+ax.bar(year_counts.index, year_counts.values)
+ax.set_title("Publications by Year")
+ax.set_xlabel("Year")
+ax.set_ylabel("Number of Papers")
+
+st.pyplot(fig)
